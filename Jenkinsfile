@@ -10,7 +10,7 @@ pipeline {
       }
       steps {
         script {
-          env.BRANCH_TYPE = 'test'
+          env.BRANCH_TYPE='test'
         //   sh '''
         //     env.BRANCH_TYPE=test
         //   '''
@@ -34,7 +34,7 @@ pipeline {
       }
       steps {
         script {
-          env.BRANCH_TYPE = 'fix'
+          BRANCH_TYPE='fix'
         //   sh '''
         //     env.BRANCH_TYPE=fix
         //   '''
@@ -49,7 +49,7 @@ pipeline {
         
         script {
           sh '''
-            env.BRANCH_TYPE = 'dev'
+            BRANCH_TYPE='dev'
           '''
         }
       }
@@ -72,7 +72,7 @@ pipeline {
       steps {
         script {
           sh '''
-            env.BRANCH_TYPE = 'main'
+            BRANCH_TYPE='main'
           '''
         }
       }
