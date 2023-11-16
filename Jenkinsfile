@@ -1,7 +1,7 @@
 pipeline {
   agent { node { label "Main" } }
   stages {
-    stage("Check") {
+    stage('Check') {
       environment { 
         BRANCH_TYPE = 'test'
       }
@@ -52,12 +52,12 @@ pipeline {
     //     git branch: 'dev', url: 'https://github.com/w41203208/test-build-server.git'
     //   }
     // }
-    stage("Build") {
+    stage('Build') {
       steps {
         echo "----------- Build $BRANCH_TYPE -----------"
       }
     }
-    stage("Deploy") {
+    stage('Deploy') {
       when {
         branch 'main'
       }
