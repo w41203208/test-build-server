@@ -9,11 +9,12 @@ pipeline {
         branch 'test-*'
       }
       steps {
-        script {
-          sh '''
-            env.BRANCH_TYPE=test
-          '''
-        }
+        env.BRANCH_TYPE = 'test'
+        // script {
+        //   sh '''
+        //     env.BRANCH_TYPE=test
+        //   '''
+        // }
         // echo TEST=${TEST}
         // echo BUILD_ID=${env.BUILD_ID}
         // echo BUILD_NUMBER=${env.BUILD_NUMBER}
@@ -32,11 +33,12 @@ pipeline {
         branch 'fix-*'
       }
       steps {
-        script {
-          sh '''
-            env.BRANCH_TYPE=fix
-          '''
-        }
+        env.BRANCH_TYPE = 'fix'
+        // script {
+        //   sh '''
+        //     env.BRANCH_TYPE=fix
+        //   '''
+        // }
       }
     }
     stage('Dev') {
@@ -44,9 +46,10 @@ pipeline {
         branch 'dev-*'
       }
       steps {
+        
         script {
           sh '''
-            env.BRANCH_TYPE=dev
+            env.BRANCH_TYPE = 'dev'
           '''
         }
       }
