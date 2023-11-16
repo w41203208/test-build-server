@@ -31,9 +31,12 @@ pipeline {
     //   }
     // }
     stage('Build') {
-      expression {
-        return env.EXCLUDE_BRANCH != 'main'
+      when{
+        expression {
+          return env.EXCLUDE_BRANCH != 'main'
+        }
       }
+      
       steps {
         script {
           sh '''
