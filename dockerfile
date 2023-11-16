@@ -16,11 +16,5 @@ RUN yarn
 RUN yarn build
 
 
-FROM node:21.2.0 AS deploy
-
-WORKDIR /app
-
-COPY --from=build /app/dist .
-
-CMD ["node", "index.js"]
+CMD ["node", "dist/index.js"]
 
