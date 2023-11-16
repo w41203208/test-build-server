@@ -3,7 +3,7 @@ pipeline {
   environment { 
     BRANCH_TYPE = ''
   }
-  tool {
+  tools {
     nodejs 'NodeJS-18.16.0'
   }
   stages {
