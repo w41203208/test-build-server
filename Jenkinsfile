@@ -1,7 +1,7 @@
 pipeline {
   agent { node { label "Main" } }
   environment { 
-    BRANCH_TYPE = ''
+    BRANCH_TYPE = 'test'
   }
   stages {
     stage('Check') {
@@ -10,7 +10,7 @@ pipeline {
       }
       steps {
         script {
-          env.BRANCH_TYPE='test'
+          BRANCH_TYPE='test'
         //   sh '''
         //     env.BRANCH_TYPE=test
         //   '''
