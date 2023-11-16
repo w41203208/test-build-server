@@ -1,10 +1,13 @@
 FROM node:21.2.0 AS build
 USER root
 
-WORKDIR /app
-
 RUN npm install ts-node tsc yarn typescript
 RUN yarn -v
+
+WORKDIR /app
+
+COPY . .
+
 RUN yarn upgrade --latest
 RUN yarn
 RUN yarn build
