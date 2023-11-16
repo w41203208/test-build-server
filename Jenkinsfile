@@ -34,10 +34,9 @@ pipeline {
       }
       steps {
         script {
-          BRANCH_TYPE=fix
-        //   sh '''
-        //     env.BRANCH_TYPE=fix
-        //   '''
+          sh '''
+            export BRANCH_TYPE=fix
+          '''
         }
       }
     }
@@ -46,10 +45,9 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        withEnv(["BRANCH_TYPE=dev"])
-        // script {
-        //   env.BRANCH_TYPE = 'dev'
-        // }
+        script {
+          export BRANCH_TYPE=dev
+        }
       }
     }
     // stage('Checkout') {
