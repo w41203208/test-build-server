@@ -11,8 +11,7 @@ pipeline {
       steps {
         script {
           sh '''
-            env.BRANCH_TYPE = 'test'
-            echo "Hello, $BRANCH_TYPE"
+            BRANCH_TYPE='test'
           '''
         }
         // echo TEST=${TEST}
@@ -35,8 +34,7 @@ pipeline {
       steps {
         script {
           sh '''
-            env.BRANCH_TYPE = 'fix'
-            echo "Hello, $BRANCH_TYPE"
+            BRANCH_TYPE='fix'
           '''
         }
       }
@@ -48,8 +46,7 @@ pipeline {
       steps {
         script {
           sh '''
-            env.BRANCH_TYPE = 'dev'
-            echo "Hello, $BRANCH_TYPE"
+            BRANCH_TYPE='fix'
           '''
         }
       }
@@ -62,6 +59,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "----------- Build $BRANCH_TYPE -----------"
+        echo "Hello, ${env.BRANCH_TYPE}"
       }
     }
     stage('Deploy') {
@@ -72,7 +70,6 @@ pipeline {
         script {
           sh '''
             env.BRANCH_TYPE = 'main'
-            echo "Hello, $BRANCH_TYPE"
           '''
         }
       }
