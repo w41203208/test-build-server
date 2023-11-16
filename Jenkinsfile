@@ -71,7 +71,11 @@ pipeline {
           echo "Execute ${BRANCH_TYPE}"
         }
         script {
-          sh 'yarn start'
+
+          sh '''
+          echo Use this package - mocha to write unit test
+          echo https://wshs0713.github.io/posts/e7656e62/
+          '''
         }
       }
     }
