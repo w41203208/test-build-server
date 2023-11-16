@@ -1,7 +1,7 @@
 pipeline {
   agent { node { label "Main" } }
   environment { 
-    BRANCH_TYPE = 'test'
+    BRANCH_TYPE = ''
   }
   stages {
     stage('Check') {
@@ -9,11 +9,8 @@ pipeline {
         branch 'test-*'
       }
       steps {
-        script {
-          BRANCH_TYPE=test
-        //   sh '''
-        //     env.BRANCH_TYPE=test
-        //   '''
+        withEnv(["BRANCH_TYPE=test"]) {
+          echo "----------- BRANCH_TYPE=${BRANCH_TYPE} -----------"
         }
         // echo TEST=${TEST}
         // echo BUILD_ID=${env.BUILD_ID}
@@ -33,10 +30,8 @@ pipeline {
         branch 'fix-*'
       }
       steps {
-        script {
-          sh '''
-            export BRANCH_TYPE=fix
-          '''
+        withEnv(["BRANCH_TYPE=fix"]) {
+          echo "----------- BRANCH_TYPE=${BRANCH_TYPE} -----------"
         }
       }
     }
@@ -45,9 +40,10 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        script {
-          export BRANCH_TYPE=dev
+        withEnv(["BRANCH_TYPE=dev"]) {
+          echo "----------- BRANCH_TYPE=${BRANCH_TYPE} -----------"
         }
+        
       }
     }
     // stage('Checkout') {
@@ -55,21 +51,13 @@ pipeline {
     //     git branch: 'dev', url: 'https://github.com/w41203208/test-build-server.git'
     //   }
     // }
-    stage('Build') {
-      steps {
-        echo "----------- Build ${env.BRANCH_TYPE} -----------"
-        echo "Hello, ${env.BRANCH_TYPE}"
-      }
-    }
     stage('Deploy') {
       when {
         branch 'main'
       }
       steps {
-        script {
-          sh '''
-            BRANCH_TYPE=main
-          '''
+        withEnv(["BRANCH_TYPE=main"]) {
+          echo "----------- BRANCH_TYPE=${BRANCH_TYPE} -----------"
         }
       }
     }
