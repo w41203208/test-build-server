@@ -1,11 +1,11 @@
 pipeline {
   agent { label "Main" }
   stages {
-    stage("Check"){
+    stage("Check") {
       environment { 
         TEST = 'test'
       }
-      steps{
+      steps {
         echo TEST=${TEST}
         echo BUILD_ID=${env.BUILD_ID}
         echo BUILD_NUMBER=${env.BUILD_NUMBER}
@@ -19,10 +19,14 @@ pipeline {
         echo WORKSPACE=${env.WORKSPACE}
       }
     }
-    stage("Build"){
-      
-      steps{
-        echo ----------- Build -----------
+    // stage('Checkout') {
+    //   steps {
+    //     git branch: 'dev', url: 'https://github.com/w41203208/test-build-server.git'
+    //   }
+    // }
+    stage("Build") {
+      steps {
+        echo "----------- Build -----------"
       }
     }
   }
