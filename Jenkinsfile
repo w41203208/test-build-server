@@ -11,7 +11,7 @@ pipeline {
       steps {
         script {
           sh '''
-            BRANCH_TYPE='test'
+            env.BRANCH_TYPE=test
           '''
         }
         // echo TEST=${TEST}
@@ -34,7 +34,7 @@ pipeline {
       steps {
         script {
           sh '''
-            BRANCH_TYPE='fix'
+            env.BRANCH_TYPE=fix
           '''
         }
       }
@@ -46,7 +46,7 @@ pipeline {
       steps {
         script {
           sh '''
-            BRANCH_TYPE='fix'
+            env.BRANCH_TYPE=dev
           '''
         }
       }
