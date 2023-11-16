@@ -5,7 +5,7 @@ pipeline {
     EXCLUDE_BRANCH = 'main'
   }
   tools {
-    nodejs 'NodeJS-18.16.0'
+    nodejs 'NodeJS-21.2.0'
   }
   stages {
     // stage('Check') {
@@ -104,7 +104,7 @@ pipeline {
           echo "Execute ${BRANCH_TYPE}"
         }
         sshPublisher(publishers: [sshPublisherDesc(configName: 'w41203208_wanin@webrtc', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd test/test-server-jay 
-        sudo bash start-with-docker.sh
+        sudo bash start-with-docker.sh test-server-jay
         ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'test/test-server-jay', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
