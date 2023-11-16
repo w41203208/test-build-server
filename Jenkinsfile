@@ -11,8 +11,12 @@ pipeline {
         branch 'test-*'
       }
       steps {
-        env.BRANCH_TYPE = 'test'
-        echo "Hello, $BRANCH_TYPE"
+        script {
+          sh '''
+            env.BRANCH_TYPE = 'test'
+            echo "Hello, $BRANCH_TYPE"
+          '''
+        }
         // echo TEST=${TEST}
         // echo BUILD_ID=${env.BUILD_ID}
         // echo BUILD_NUMBER=${env.BUILD_NUMBER}
@@ -33,10 +37,12 @@ pipeline {
         branch 'fix-*'
       }
       steps {
-        env.BRANCH_TYPE = 'fix'
-        sh '''
-          echo "Hello, $BRANCH_TYPE"
-        '''
+        script {
+          sh '''
+            env.BRANCH_TYPE = 'fix'
+            echo "Hello, $BRANCH_TYPE"
+          '''
+        }
       }
     }
     stage('Dev') {
@@ -46,8 +52,12 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        env.BRANCH_TYPE = 'dev'
-        echo "Hello, $BRANCH_TYPE"
+        script {
+          sh '''
+            env.BRANCH_TYPE = 'dev'
+            echo "Hello, $BRANCH_TYPE"
+          '''
+        }
       }
     }
     // stage('Checkout') {
@@ -66,8 +76,8 @@ pipeline {
       }
       steps {
         script {
-          env.BRANCH_TYPE = 'main'
           sh '''
+            env.BRANCH_TYPE = 'main'
             echo "Hello, $BRANCH_TYPE"
           '''
         }
