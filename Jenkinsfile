@@ -6,12 +6,12 @@ pipeline {
   stages {
     stage('Check') {
       environment { 
-        BRANCH_TYPE = 'test'
       }
       when {
         branch 'test-*'
       }
       steps {
+        env.BRANCH_TYPE = 'test'
         echo "Hello, $BRANCH_TYPE"
         // echo TEST=${TEST}
         // echo BUILD_ID=${env.BUILD_ID}
@@ -28,12 +28,12 @@ pipeline {
     }
     stage('Fix-Feature') {
       environment { 
-        BRANCH_TYPE = 'fix'
       }
       when {
         branch 'fix-*'
       }
       steps {
+        env.BRANCH_TYPE = 'fix'
         sh '''
           echo "Hello, $BRANCH_TYPE"
         '''
@@ -41,12 +41,12 @@ pipeline {
     }
     stage('Dev') {
       environment { 
-        BRANCH_TYPE = 'dev'
       }
       when {
         branch 'dev-*'
       }
       steps {
+        env.BRANCH_TYPE = 'dev'
         echo "Hello, $BRANCH_TYPE"
       }
     }
@@ -64,11 +64,9 @@ pipeline {
       when {
         branch 'main'
       }
-      environment { 
-        BRANCH_TYPE = 'main'
-      }
       steps {
         script {
+          env.BRANCH_TYPE = 'main'
           sh '''
             echo "Hello, $BRANCH_TYPE"
           '''
