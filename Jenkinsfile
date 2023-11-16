@@ -5,8 +5,6 @@ pipeline {
   }
   stages {
     stage('Check') {
-      environment { 
-      }
       when {
         branch 'test-*'
       }
@@ -31,8 +29,6 @@ pipeline {
       }
     }
     stage('Fix-Feature') {
-      environment { 
-      }
       when {
         branch 'fix-*'
       }
@@ -46,8 +42,6 @@ pipeline {
       }
     }
     stage('Dev') {
-      environment { 
-      }
       when {
         branch 'dev-*'
       }
