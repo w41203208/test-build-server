@@ -46,10 +46,10 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        
-        script {
-          env.BRANCH_TYPE = 'dev'
-        }
+        sh "printenv"
+        // script {
+        //   env.BRANCH_TYPE = 'dev'
+        // }
       }
     }
     // stage('Checkout') {
