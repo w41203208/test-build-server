@@ -5,7 +5,7 @@ pipeline {
     EXCLUDE_BRANCH = 'main'
   }
   tools {
-    nodejs 'NodeJS-18.16.0'
+    nodejs 'NodeJS-21.2.0'
   }
   stages {
     // stage('Check') {
