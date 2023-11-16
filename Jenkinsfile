@@ -9,12 +9,12 @@ pipeline {
         branch 'test-*'
       }
       steps {
-        env.BRANCH_TYPE = 'test'
-        // script {
+        script {
+          env.BRANCH_TYPE = 'test'
         //   sh '''
         //     env.BRANCH_TYPE=test
         //   '''
-        // }
+        }
         // echo TEST=${TEST}
         // echo BUILD_ID=${env.BUILD_ID}
         // echo BUILD_NUMBER=${env.BUILD_NUMBER}
@@ -33,12 +33,12 @@ pipeline {
         branch 'fix-*'
       }
       steps {
-        env.BRANCH_TYPE = 'fix'
-        // script {
+        script {
+          env.BRANCH_TYPE = 'fix'
         //   sh '''
         //     env.BRANCH_TYPE=fix
         //   '''
-        // }
+        }
       }
     }
     stage('Dev') {
