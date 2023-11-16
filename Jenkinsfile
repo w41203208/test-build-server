@@ -46,7 +46,7 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        BRANCH_TYPE=dev
+        export BRANCH_TYPE=dev
         sh "printenv"
         // script {
         //   env.BRANCH_TYPE = 'dev'
