@@ -8,9 +8,6 @@ pipeline {
       when {
         branch 'test-*'
       }
-      environment { 
-        TEST = 'test'
-      }
       steps {
         echo "Hello, $BRANCH_TYPE"
         // echo TEST=${TEST}
