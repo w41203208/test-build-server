@@ -10,7 +10,7 @@ pipeline {
       }
       steps {
         script {
-          BRANCH_TYPE='test'
+          BRANCH_TYPE=test
         //   sh '''
         //     env.BRANCH_TYPE=test
         //   '''
@@ -34,7 +34,7 @@ pipeline {
       }
       steps {
         script {
-          BRANCH_TYPE='fix'
+          BRANCH_TYPE=fix
         //   sh '''
         //     env.BRANCH_TYPE=fix
         //   '''
@@ -46,8 +46,7 @@ pipeline {
         branch 'dev-*'
       }
       steps {
-        export BRANCH_TYPE=dev
-        sh "printenv"
+        withEnv(["BRANCH_TYPE=dev"])
         // script {
         //   env.BRANCH_TYPE = 'dev'
         // }
@@ -71,7 +70,7 @@ pipeline {
       steps {
         script {
           sh '''
-            BRANCH_TYPE='main'
+            BRANCH_TYPE=main
           '''
         }
       }
