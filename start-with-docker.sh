@@ -1,8 +1,11 @@
 #!/bin/bash
 
+
+
 container_id=$(sudo docker ps -a | grep $1 | awk '{print $1}')
 
 if [ "$container_id" != "" ]; then
+  sudo docker stop $container_id
   sudo docker rm $container_id
 fi
 
