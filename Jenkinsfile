@@ -1,5 +1,8 @@
 pipeline {
   agent { node { label "Main" } }
+  environment { 
+    BRANCH_TYPE = ''
+  }
   stages {
     stage('Check') {
       environment { 
