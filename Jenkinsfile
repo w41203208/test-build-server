@@ -58,7 +58,7 @@ pipeline {
     // }
     stage('Build') {
       steps {
-        echo "----------- Build $BRANCH_TYPE -----------"
+        echo "----------- Build ${env.BRANCH_TYPE} -----------"
         echo "Hello, ${env.BRANCH_TYPE}"
       }
     }
