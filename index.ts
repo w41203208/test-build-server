@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req: any, res: any) => {
-  return res.send('Hellow');
+  return res.send('Hello');
 });
 
 const server = app.listen(port, () => {
