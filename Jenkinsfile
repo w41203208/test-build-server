@@ -1,7 +1,13 @@
 pipeline {
-  agent { label "Main" }
+  agent { node { label "Main" } }
   stages {
     stage("Check") {
+      environment { 
+        BRANCH_TYPE = 'test'
+      }
+      when {
+        branch 'test-*'
+      }
       environment { 
         TEST = 'test'
       }
@@ -19,6 +25,28 @@ pipeline {
         echo WORKSPACE=${env.WORKSPACE}
       }
     }
+    stage('Fix-Feature') {
+      environment { 
+        BRANCH_TYPE = 'fix'
+      }
+      when {
+        branch 'fix-*'
+      }
+      steps {
+        sh("node -v")
+      }
+    }
+    stage('Dev') {
+      environment { 
+        BRANCH_TYPE = 'dev'
+      }
+      when {
+        branch 'dev-*'
+      }
+      steps {
+
+      }
+    }
     // stage('Checkout') {
     //   steps {
     //     git branch: 'dev', url: 'https://github.com/w41203208/test-build-server.git'
@@ -26,7 +54,20 @@ pipeline {
     // }
     stage("Build") {
       steps {
-        echo "----------- Build -----------"
+        echo "----------- Build $BRANCH_TYPE -----------"
+      }
+    }
+    stage("Deploy") {
+      when {
+        branch 'main'
+      }
+      environment { 
+        BRANCH_TYPE = 'main'
+      }
+      steps {
+        script {
+          echo "Deploy"
+        }
       }
     }
   }
