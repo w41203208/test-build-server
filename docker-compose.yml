@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  test-server:
+    container_name: test-server-jay
+    image: "test-server-jay:test"
+    stdin_open: true
+    # tty: true
+    # environment:
+    #   - REDIS_HOST=10.5.3.195
+    ports:
+      - "65002:8787/tcp"
