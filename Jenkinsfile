@@ -2,6 +2,7 @@ pipeline {
   agent { node { label "Main" } }
   environment { 
     BRANCH_TYPE = ''
+    EXCLUDE_BRANCH = 'main'
   }
   tools {
     nodejs 'NodeJS-18.16.0'
@@ -30,6 +31,9 @@ pipeline {
     //   }
     // }
     stage('Build') {
+      expression {
+        return env.EXCLUDE_BRANCH != 'main'
+      }
       steps {
         script {
           sh '''
