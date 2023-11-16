@@ -48,9 +48,7 @@ pipeline {
       steps {
         
         script {
-          sh '''
-            BRANCH_TYPE='dev'
-          '''
+          env.BRANCH_TYPE = 'dev'
         }
       }
     }
