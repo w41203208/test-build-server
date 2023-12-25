@@ -16,4 +16,4 @@ if [ "$image_id" != "" ]; then
 fi
 
 sudo docker build -t $1:test .
-docker compose -f ./docker-compose.yml up -d
+sudo docker compose -f ./docker-compose.yml up -d
